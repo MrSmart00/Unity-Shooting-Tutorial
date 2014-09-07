@@ -9,7 +9,7 @@ TagManager:
   Builtin Layer 2: Ignore Raycast
   Builtin Layer 3: 
   Builtin Layer 4: Water
-  Builtin Layer 5: 
+  Builtin Layer 5: UI
   Builtin Layer 6: 
   Builtin Layer 7: 
   User Layer 8: 
@@ -40,4 +40,12 @@ TagManager:
   - name: Default
     userID: 0
     uniqueID: 0
+    locked: 0
+  - name: Bullet
+    userID: 1
+    uniqueID: 124139727
+    locked: 0
+  - name: Player
+    userID: 2
+    uniqueID: 1288650221
     locked: 0
