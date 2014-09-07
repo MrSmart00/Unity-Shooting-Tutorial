@@ -11,7 +11,10 @@ GameObject:
   - 212: {fileID: 21200000}
   - 95: {fileID: 9500000}
   - 50: {fileID: 5000000}
-  m_Layer: 0
+  - 114: {fileID: 11400002}
+  - 114: {fileID: 11400000}
+  - 61: {fileID: 6100000}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -45,6 +48,17 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!61 &6100000
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: .100000001, y: .100000001}
+  m_Center: {x: 0, y: 0}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3
@@ -57,9 +71,36 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 0a52f00ee19b84dbc897b41523a9e9bb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ba6108284dc4f9e94002c2dac1be5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3156b7338a5e4c65a851caa1f58f01b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  shotDelay: .0500000007
+  bullet: {fileID: 100002, guid: cc50810c8882145e199d139be322d523, type: 2}
+  canShot: 0
+  explosion: {fileID: 100000, guid: c5faea2d739824df3a5c824cb76f4939, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -78,7 +119,7 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1288650221
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: bf3bdd2147b394bc2b771f2556f0b49d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
