@@ -9,6 +9,9 @@ public class Emitter : MonoBehaviour {
 	// 現在のWave
 	private int currentWave;
 	
+	// Managerコンポーネント
+	private Manager manager;
+	
 	IEnumerator Start ()
 	{
 		
@@ -17,21 +20,29 @@ public class Emitter : MonoBehaviour {
 			yield break;
 		}
 		
+		// Managerコンポーネントをシーン内から探して取得する
+		manager = FindObjectOfType<Manager>();
+		
 		while (true) {
 			
+			// タイトル表示中は待機
+			while(manager.IsPlaying() == false) {
+				yield return new WaitForEndOfFrame ();
+			}
+			
 			// Waveを作成する
-			GameObject wave = (GameObject)Instantiate (waves [currentWave], transform.position, Quaternion.identity);
+			GameObject g = (GameObject)Instantiate (waves [currentWave], transform.position, Quaternion.identity);
 			
 			// WaveをEmitterの子要素にする
-			wave.transform.parent = transform;
+			g.transform.parent = transform;
 			
 			// Waveの子要素のEnemyが全て削除されるまで待機する
-			while (wave.transform.childCount != 0) {
+			while (g.transform.childCount != 0) {
 				yield return new WaitForEndOfFrame ();
 			}
 			
 			// Waveの削除
-			Destroy (wave);
+			Destroy (g);
 			
 			// 格納されているWaveを全て実行したらcurrentWaveを0にする（最初から -> ループ）
 			if (waves.Length <= ++currentWave) {
