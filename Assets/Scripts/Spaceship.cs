@@ -2,7 +2,7 @@
 
 // Rigidbody2Dコンポーネントを必須にする
 [RequireComponent(typeof(Rigidbody2D))]
-public class Spaceship : MonoBehaviour
+public abstract class Spaceship : MonoBehaviour
 {
 	// 移動スピード
 	public float speed;
@@ -13,20 +13,8 @@ public class Spaceship : MonoBehaviour
 	// 弾のPrefab
 	public GameObject bullet;
 	
-	// 弾を撃つかどうか
-	public bool canShot;
-	
 	// 爆発のPrefab
 	public GameObject explosion;
-	
-	// アニメーターコンポーネント
-	private Animator animator;
-	
-	void Start ()
-	{
-		// アニメーターコンポーネントを取得
-		animator = GetComponent<Animator> ();
-	}
 	
 	// 爆発の作成
 	public void Explosion ()
@@ -39,10 +27,6 @@ public class Spaceship : MonoBehaviour
 	{
 		Instantiate (bullet, origin.position, origin.rotation);
 	}
-	
-	// アニメーターコンポーネントの取得
-	public Animator GetAnimator()
-	{
-		return animator;
-	}
+
+	protected abstract void Move (Vector2 direction);
 }

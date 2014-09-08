@@ -104,7 +104,6 @@ GameObject:
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
   - 60: {fileID: 6000000}
-  - 114: {fileID: 11400012}
   - 114: {fileID: 11400018}
   m_Layer: 9
   m_Name: Enemy
@@ -157,7 +156,6 @@ GameObject:
   - 114: {fileID: 11400010}
   - 114: {fileID: 11400008}
   - 60: {fileID: 6000004}
-  - 114: {fileID: 11400014}
   - 114: {fileID: 11400020}
   m_Layer: 9
   m_Name: Enemy
@@ -480,7 +478,6 @@ GameObject:
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
   - 60: {fileID: 6000002}
-  - 114: {fileID: 11400016}
   - 114: {fileID: 11400022}
   m_Layer: 9
   m_Name: Enemy
@@ -1128,54 +1125,6 @@ MonoBehaviour:
   bullet: {fileID: 100000, guid: e1acff58bbd994502b0c5aa6088260f6, type: 2}
   canShot: 1
   explosion: {fileID: 100000, guid: a7ed0315d0e664da9bcb03d47e23e682, type: 2}
---- !u!114 &11400012
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3156b7338a5e4c65a851caa1f58f01b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: .5
-  shotDelay: .300000012
-  bullet: {fileID: 100000, guid: bf11de616674d4dd3ae8b044ab9dd7fe, type: 2}
-  canShot: 0
-  explosion: {fileID: 100000, guid: c5faea2d739824df3a5c824cb76f4939, type: 2}
---- !u!114 &11400014
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3156b7338a5e4c65a851caa1f58f01b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: .5
-  shotDelay: .300000012
-  bullet: {fileID: 100000, guid: bf11de616674d4dd3ae8b044ab9dd7fe, type: 2}
-  canShot: 0
-  explosion: {fileID: 100000, guid: c5faea2d739824df3a5c824cb76f4939, type: 2}
---- !u!114 &11400016
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3156b7338a5e4c65a851caa1f58f01b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: .5
-  shotDelay: .300000012
-  bullet: {fileID: 100000, guid: bf11de616674d4dd3ae8b044ab9dd7fe, type: 2}
-  canShot: 0
-  explosion: {fileID: 100000, guid: c5faea2d739824df3a5c824cb76f4939, type: 2}
 --- !u!114 &11400018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1187,7 +1136,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c99620c7722348abaa2c6856b253865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  speed: .5
+  shotDelay: .300000012
+  bullet: {fileID: 100000, guid: bf11de616674d4dd3ae8b044ab9dd7fe, type: 2}
+  explosion: {fileID: 100000, guid: c5faea2d739824df3a5c824cb76f4939, type: 2}
+  hp: 1
+  canShot: 1
   point: 100
 --- !u!114 &11400020
 MonoBehaviour:
@@ -1200,7 +1154,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c99620c7722348abaa2c6856b253865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  speed: .5
+  shotDelay: .300000012
+  bullet: {fileID: 100000, guid: bf11de616674d4dd3ae8b044ab9dd7fe, type: 2}
+  explosion: {fileID: 100000, guid: c5faea2d739824df3a5c824cb76f4939, type: 2}
+  hp: 1
+  canShot: 1
   point: 100
 --- !u!114 &11400022
 MonoBehaviour:
@@ -1213,7 +1172,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c99620c7722348abaa2c6856b253865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  speed: .5
+  shotDelay: .300000012
+  bullet: {fileID: 100000, guid: bf11de616674d4dd3ae8b044ab9dd7fe, type: 2}
+  explosion: {fileID: 100000, guid: c5faea2d739824df3a5c824cb76f4939, type: 2}
+  hp: 1
+  canShot: 1
   point: 100
 --- !u!212 &21200000
 SpriteRenderer:

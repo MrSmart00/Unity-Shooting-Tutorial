@@ -11,7 +11,6 @@ GameObject:
   - 212: {fileID: 21200000}
   - 95: {fileID: 9500000}
   - 50: {fileID: 5000000}
-  - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
   - 60: {fileID: 6000000}
   m_Layer: 9
@@ -122,7 +121,6 @@ GameObject:
   - 212: {fileID: 21200002}
   - 95: {fileID: 9500002}
   - 50: {fileID: 5000002}
-  - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
   - 60: {fileID: 6000002}
   m_Layer: 9
@@ -143,7 +141,6 @@ GameObject:
   - 212: {fileID: 21200004}
   - 95: {fileID: 9500004}
   - 50: {fileID: 5000004}
-  - 114: {fileID: 11400010}
   - 114: {fileID: 11400008}
   - 60: {fileID: 6000004}
   m_Layer: 9
@@ -542,40 +539,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c99620c7722348abaa2c6856b253865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  speed: .5
+  shotDelay: .300000012
+  bullet: {fileID: 100000, guid: bf11de616674d4dd3ae8b044ab9dd7fe, type: 2}
+  explosion: {fileID: 100000, guid: c5faea2d739824df3a5c824cb76f4939, type: 2}
+  hp: 1
+  canShot: 1
   point: 100
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3156b7338a5e4c65a851caa1f58f01b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: .5
-  shotDelay: .300000012
-  bullet: {fileID: 100000, guid: bf11de616674d4dd3ae8b044ab9dd7fe, type: 2}
-  canShot: 0
-  explosion: {fileID: 100000, guid: c5faea2d739824df3a5c824cb76f4939, type: 2}
---- !u!114 &11400004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3156b7338a5e4c65a851caa1f58f01b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: .5
-  shotDelay: .300000012
-  bullet: {fileID: 100000, guid: bf11de616674d4dd3ae8b044ab9dd7fe, type: 2}
-  canShot: 0
-  explosion: {fileID: 100000, guid: c5faea2d739824df3a5c824cb76f4939, type: 2}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -587,7 +557,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c99620c7722348abaa2c6856b253865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  speed: .5
+  shotDelay: .300000012
+  bullet: {fileID: 100000, guid: bf11de616674d4dd3ae8b044ab9dd7fe, type: 2}
+  explosion: {fileID: 100000, guid: c5faea2d739824df3a5c824cb76f4939, type: 2}
+  hp: 1
+  canShot: 1
   point: 100
 --- !u!114 &11400008
 MonoBehaviour:
@@ -600,24 +575,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c99620c7722348abaa2c6856b253865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
-  point: 100
---- !u!114 &11400010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3156b7338a5e4c65a851caa1f58f01b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   speed: .5
   shotDelay: .300000012
   bullet: {fileID: 100000, guid: bf11de616674d4dd3ae8b044ab9dd7fe, type: 2}
-  canShot: 0
   explosion: {fileID: 100000, guid: c5faea2d739824df3a5c824cb76f4939, type: 2}
+  hp: 1
+  canShot: 1
+  point: 100
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

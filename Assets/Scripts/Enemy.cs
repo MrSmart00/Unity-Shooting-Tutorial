@@ -1,28 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : Spaceship {
 
 	// ヒットポイント
 	public int hp = 1;
-	
+
+	// 弾を撃つかどうか
+	public bool canShot;
+
 	// スコアのポイント
 	public int point = 100;
-	
-	// Spaceshipコンポーネント
-	Spaceship spaceship;
-	
+
 	IEnumerator Start ()
 	{
-		
-		// Spaceshipコンポーネントを取得
-		spaceship = GetComponent<Spaceship> ();
-		
 		// ローカル座標のY軸のマイナス方向に移動する
 		Move (transform.up * -1);
 		
 		// canShotがfalseの場合、ここでコルーチンを終了させる
-		if (spaceship.canShot == false) {
+		if (canShot == false) {
 			yield break;
 		}
 		
@@ -34,18 +30,18 @@ public class Enemy : MonoBehaviour {
 				Transform shotPosition = transform.GetChild (i);
 				
 				// ShotPositionの位置/角度で弾を撃つ
-				spaceship.Shot (shotPosition);
+				Shot (shotPosition);
 			}
 			
 			// shotDelay秒待つ
-			yield return new WaitForSeconds (spaceship.shotDelay);
+			yield return new WaitForSeconds (shotDelay);
 		}
 	}
 	
 	// 機体の移動
-	public void Move (Vector2 direction)
+	protected override void Move (Vector2 direction)
 	{
-		rigidbody2D.velocity = direction * spaceship.speed;
+		rigidbody2D.velocity = direction * speed;
 	}
 	
 	void OnTriggerEnter2D (Collider2D c)
@@ -75,14 +71,14 @@ public class Enemy : MonoBehaviour {
 			FindObjectOfType<Score>().AddPoint(point);
 			
 			// 爆発
-			spaceship.Explosion ();
+			Explosion ();
 			
 			// エネミーの削除
 			Destroy (gameObject);
 			
 		}else{
 			
-			spaceship.GetAnimator().SetTrigger("Damage");
+			GetComponent<Animator> ().SetTrigger("Damage");
 			
 		}
 	}
