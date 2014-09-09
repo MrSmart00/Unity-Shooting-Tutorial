@@ -4,13 +4,21 @@ using System.Collections;
 public class Enemy : Spaceship {
 
 	// ヒットポイント
-	public int hp = 1;
+	[Range(10, 200)]
+	public int hp = 10;
 
 	// 弾を撃つかどうか
 	public bool canShot;
 
+	public enum EnemyScore
+	{
+		ENEMY_SCORE_WEAK = 100,
+		ENEMY_SCORE_NORMAL = 200,
+		ENEMY_SCORE_STRONG = 300,
+		ENEMY_SCORE_BOSS = 2000
+	}
 	// スコアのポイント
-	public int point = 100;
+	public EnemyScore score;
 
 	IEnumerator Start ()
 	{
@@ -68,7 +76,7 @@ public class Enemy : Spaceship {
 		if(hp <= 0 )
 		{
 			// スコアコンポーネントを取得してポイントを追加
-			FindObjectOfType<Score>().AddPoint(point);
+			FindObjectOfType<Score>().AddPoint((int)score);
 			
 			// 爆発
 			Explosion ();

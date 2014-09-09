@@ -2,13 +2,16 @@
 
 // Rigidbody2Dコンポーネントを必須にする
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Collider2D))]
 public abstract class Spaceship : MonoBehaviour
 {
 	// 移動スピード
-	public float speed;
+	[Range(0.0f, 10.0f)]
+	public float speed = 1.0f;
 	
 	// 弾を撃つ間隔
-	public float shotDelay;
+	[Range(0.0f,  1.0f)]
+	public float shotDelay = 1.0f;
 	
 	// 弾のPrefab
 	public GameObject bullet;

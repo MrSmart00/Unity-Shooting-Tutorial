@@ -4,6 +4,7 @@ using System.Collections;
 public class Background : MonoBehaviour {
 
 	// スクロールするスピード
+	[Range(0.0f, 0.1f)]
 	public float speed = 0.1f;
 	
 	void Update ()

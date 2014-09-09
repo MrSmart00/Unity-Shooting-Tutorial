@@ -181,9 +181,9 @@ MonoBehaviour:
   shotDelay: .300000012
   bullet: {fileID: 100000, guid: bf11de616674d4dd3ae8b044ab9dd7fe, type: 2}
   explosion: {fileID: 100000, guid: c5faea2d739824df3a5c824cb76f4939, type: 2}
-  hp: 1
+  hp: 10
   canShot: 1
-  point: 100
+  score: 100
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -10,6 +10,13 @@ public class Manager : MonoBehaviour {
 	// タイトル
 	public Canvas title;
 
+	void Start ()
+	{
+		foreach(object n in Coroutine ()) {
+			Debug.Log(n);
+		}
+	}
+
 	void Update ()
 	{
 		// ゲーム中ではなく、Xキーが押されたらtrueを返す。
@@ -38,5 +45,15 @@ public class Manager : MonoBehaviour {
 	{
 		// ゲーム中かどうかはタイトルの表示/非表示で判断する
 		return title.enabled == false;
+	}
+
+	private IEnumerable Coroutine()
+	{
+		Debug.Log ("**********");
+		yield return 1;
+		yield return 10;
+		yield return 100;
+		yield return "ネコミミモード";
+		yield break;
 	}
 }
