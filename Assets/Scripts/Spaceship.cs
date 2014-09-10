@@ -2,7 +2,6 @@
 
 // Rigidbody2Dコンポーネントを必須にする
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Collider2D))]
 public abstract class Spaceship : MonoBehaviour
 {
 	// 移動スピード
