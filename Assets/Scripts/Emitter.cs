@@ -1,54 +1,40 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Emitter : MonoBehaviour {
-
-	// Waveプレハブを格納する
-	public GameObject[] waves;
 	
-	// 現在のWave
-	private int currentWave;
+	public GameObject enemy;
+	public GameObject managerObject;
+	[HideInInspector]
+	public List<List<Vector2>> waves;
 	
-	// Managerコンポーネント
-	private Manager manager;
-	
-	IEnumerator Start ()
+	void Start ()
 	{
-		
-		// Waveが存在しなければコルーチンを終了する
-		if (waves.Length == 0) {
-			yield break;
-		}
-		
-		// Managerコンポーネントをシーン内から探して取得する
-		manager = FindObjectOfType<Manager>();
-		
+		StartCoroutine (createWave ());
+	}
+	
+	private IEnumerator createWave ()
+	{
+		int current = 0;
+		Manager manager = managerObject.GetComponent<Manager> ();
 		while (true) {
-			
-			// タイトル表示中は待機
 			while(manager.IsPlaying() == false) {
 				yield return new WaitForEndOfFrame ();
 			}
-			
-			// Waveを作成する
-			GameObject g = (GameObject)Instantiate (waves [currentWave], transform.position, Quaternion.identity);
-			
-			// WaveをEmitterの子要素にする
-			g.transform.parent = transform;
-			
-			// Waveの子要素のEnemyが全て削除されるまで待機する
-			while (g.transform.childCount != 0) {
+			List<Vector2> positions = waves[current];
+			List<GameObject> enemies = new List<GameObject>();
+			foreach (Vector2 pos in positions) {
+				GameObject e = (GameObject) Instantiate(enemy, new Vector3(pos.x, pos.y, 0), Quaternion.identity);
+				e.transform.parent = transform;
+				enemies.Add(e);
+			}
+			while (transform.childCount != 0) {
 				yield return new WaitForEndOfFrame ();
 			}
-			
-			// Waveの削除
-			Destroy (g);
-			
-			// 格納されているWaveを全て実行したらcurrentWaveを0にする（最初から -> ループ）
-			if (waves.Length <= ++currentWave) {
-				currentWave = 0;
+			if (waves.Count <= ++current) {
+				current = 0;
 			}
-			
 		}
 	}
 }

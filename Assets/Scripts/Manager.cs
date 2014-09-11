@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,10 +13,22 @@ public class Manager : MonoBehaviour {
 
 	void Update ()
 	{
-		// ゲーム中ではなく、Xキーが押されたらtrueを返す。
-		if (IsPlaying () == false && Input.GetKeyDown (KeyCode.X)) {
+		for (int i = 0; i < Input.touchCount; i++) {
+			
+			// タッチ情報を取得する
+			Touch touch = Input.GetTouch (i);
+			
+			// ゲーム中ではなく、タッチ直後であればtrueを返す。
+			if (IsPlaying () == false && touch.phase == TouchPhase.Began) {
+				GameStart ();
+			}
+		}
+		
+		// ゲーム中ではなく、マウスクリックされたらtrueを返す。
+		if (IsPlaying () == false && Input.GetMouseButtonDown (0)) {
 			GameStart ();
 		}
+
 	}
 	
 	void GameStart ()

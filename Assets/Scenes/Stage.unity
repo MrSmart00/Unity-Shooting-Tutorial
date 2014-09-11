@@ -167,7 +167,7 @@ GameObject:
   - 114: {fileID: 314097223}
   - 222: {fileID: 314097222}
   m_Layer: 5
-  m_Name: Shooting Game
+  m_Name: Main Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Shooting Game
+  m_Text: 'Main
 
 '
 --- !u!224 &314097224
@@ -318,7 +318,7 @@ GameObject:
   - 114: {fileID: 708193904}
   - 222: {fileID: 708193903}
   m_Layer: 5
-  m_Name: Press X
+  m_Name: Sub Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -372,7 +372,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Press X
+  m_Text: 'Sub
 
 '
 --- !u!1 &751698332
@@ -488,12 +488,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a028501b928aa4d289e7595b16291608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves:
-  - {fileID: 100024, guid: dc59d2c1ce07e4f72881e09f08ad9e50, type: 2}
-  - {fileID: 100016, guid: 97a2ac8bc9ff84a7a97e3b24eaf5b048, type: 2}
-  - {fileID: 100016, guid: e5f09567eb32c4d8e958d308b2908547, type: 2}
-  - {fileID: 100016, guid: 4b637cc8ae5ec44e2b53a4c35da648d8, type: 2}
-  - {fileID: 100016, guid: 726b79a1b7373455eb79665a394eeebb, type: 2}
+  enemy: {fileID: 100000, guid: 08541fb31079649a09841120046b25c7, type: 2}
+  managerObject: {fileID: 1417936594}
 --- !u!4 &819993915
 Transform:
   m_ObjectHideFlags: 0
@@ -1027,6 +1023,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f23f5b505a0047ae947b6c26f1abac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 1627929075}
+  emitter: {fileID: 819993913}
 --- !u!1 &1627929072
 GameObject:
   m_ObjectHideFlags: 0
