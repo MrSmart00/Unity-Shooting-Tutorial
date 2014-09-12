@@ -1,55 +1,44 @@
-using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine;
 
-public class Manager : MonoBehaviour {
-
+public class Manager : MonoBehaviour
+{
 	// Playerプレハブ
 	public GameObject player;
 	
 	// タイトル
-	public Canvas title;
-
-	void Update ()
+	public GameObject title;
+	
+	void Start ()
 	{
-		for (int i = 0; i < Input.touchCount; i++) {
-			
-			// タッチ情報を取得する
-			Touch touch = Input.GetTouch (i);
-			
-			// ゲーム中ではなく、タッチ直後であればtrueを返す。
-			if (IsPlaying () == false && touch.phase == TouchPhase.Began) {
-				GameStart ();
-			}
-		}
-		
-		// ゲーム中ではなく、マウスクリックされたらtrueを返す。
-		if (IsPlaying () == false && Input.GetMouseButtonDown (0)) {
+		// Titleゲームオブジェクトを検索し取得する
+		title = GameObject.Find ("Title");
+	}
+	
+	void OnGUI ()
+	{
+		// ゲーム中ではなく、タッチまたはマウスクリック直後であればtrueを返す。
+		if (IsPlaying () == false && Event.current.type == EventType.MouseDown) {
 			GameStart ();
 		}
-
 	}
 	
 	void GameStart ()
 	{
 		// ゲームスタート時に、タイトルを非表示にしてプレイヤーを作成する
-		title.enabled = false;
+		title.SetActive (false);
 		Instantiate (player, player.transform.position, player.transform.rotation);
 	}
 	
 	public void GameOver ()
 	{
-		// ハイスコアの保存
-		FindObjectOfType<Score>().Save();
-
+		FindObjectOfType<Score> ().Save ();
 		// ゲームオーバー時に、タイトルを表示する
-		title.enabled = true;
+		title.SetActive (true);
 	}
-
+	
 	public bool IsPlaying ()
 	{
 		// ゲーム中かどうかはタイトルの表示/非表示で判断する
-		return title.enabled == false;
+		return title.activeSelf == false;
 	}
 }
