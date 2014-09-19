@@ -11,7 +11,9 @@ public class Emitter : MonoBehaviour {
 	
 	void Start ()
 	{
-		StartCoroutine (createWave ());
+		if (waves != null) {
+			StartCoroutine (createWave ());
+		}
 	}
 	
 	private IEnumerator createWave ()
