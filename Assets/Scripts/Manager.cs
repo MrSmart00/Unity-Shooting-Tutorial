@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 
-//using UnityEngine.SocialPlatforms.GameCenter;
-
 public class Manager : MonoBehaviour
 {
 	// Playerプレハブ
@@ -14,27 +12,7 @@ public class Manager : MonoBehaviour
 	{
 		// Titleゲームオブジェクトを検索し取得する
 		title = GameObject.Find ("Title");
-
-
-
-//		GameCenterPlatform.ShowDefaultAchievementCompletionBanner(true);
-//		Social.localUser.Authenticate( success => {
-//			if (success)
-//				ReportAchievement();
-//			else
-//				
-//				Debug.Log ("認証に失敗しました。");
-//		});
 	}
-
-//	void ReportAchievement() {
-//		
-//		Social.ReportProgress( "Achievement01", 100, (result) => {
-//			
-//			Debug.Log ( result ? "Achievement を報告しました。" : "Achievement の報告に失敗しました。");
-//		});
-//		
-//	}	
 
 	void OnGUI ()
 	{

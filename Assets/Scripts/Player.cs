@@ -4,8 +4,14 @@ using System.Collections;
 public class Player : Spaceship
 {
 	// Backgroundコンポーネント
-	Background background;
-	
+	private Background background;
+
+	private Vector2 offset;
+
+	[Range(0, 100)]
+	[Tooltip("移動値の抵抗力設定（大きくなる程移動が遅くなる）")]
+	public float transferResistance = 20;
+
 	IEnumerator Start ()
 	{
 		// Backgroundコンポーネントを取得。3つのうちどれか1つを取得する
@@ -23,21 +29,27 @@ public class Player : Spaceship
 			yield return new WaitForSeconds (shotDelay);
 		}
 	}
-	
+
 	void Update ()
 	{
-		// 右・左
-		float x = Input.GetAxisRaw ("Horizontal");
-		
-		// 上・下
-		float y = Input.GetAxisRaw ("Vertical");
-		
-		// 移動する向きを求める
-		Vector2 direction = new Vector2 (x, y).normalized;
-		
-		// 移動の制限
-		Move (direction);
-		
+		if (Input.touches.Length > 0) {
+			Touch touch = Input.touches [0];
+			switch (touch.phase) {
+			case TouchPhase.Began:
+				offset = touch.position;
+				break;
+			case TouchPhase.Moved:
+				Vector2 move = touch.position;
+				Vector2 diff = offset - move;
+				Move(diff / -transferResistance);
+				offset = move;
+				break;
+			case TouchPhase.Ended:
+			case TouchPhase.Canceled:
+				offset = Vector2.zero;
+				break;
+			}
+		}
 	}
 	
 	// 機体の移動

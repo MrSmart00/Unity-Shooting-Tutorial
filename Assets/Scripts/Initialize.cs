@@ -9,10 +9,10 @@ public class Initialize : MonoBehaviour {
 	public Canvas canvas;
 	public GameObject emitter;
 
+	public static string domain = "http://localhost/";
+
 	void Start () {
-//		string storagePath = Application.persistentDataPath + "/storage";
-//		Debug.Log ("PATH : " + storagePath);
-		StartCoroutine (ConnectHome("http://localhost/"));
+		StartCoroutine (ConnectHome(domain));
 	}
 	
 	// Update is called once per frame
@@ -36,7 +36,7 @@ public class Initialize : MonoBehaviour {
 					}
 				}
 			}
-			StartCoroutine (ConnectWave("http://localhost/wave.php"));
+			StartCoroutine (ConnectWave(domain + "wave.php"));
 		} else {
 			Text target = null;
 			foreach (Transform child in canvas.transform){
@@ -53,22 +53,25 @@ public class Initialize : MonoBehaviour {
 	}
 
 	private IEnumerator ConnectWave(string url) {
+		Debug.Log (url);
 		WWW www = new WWW (url);
 		yield return www;
 		if (www.error == null) {
-			IList json = (IList)Json.Deserialize(www.text);
+			IList json = (IList)Json.Deserialize (www.text);
 			List<List<Vector2>> list = new List<List<Vector2>> ();
 			foreach (IList l in json) {
-				List<Vector2> positions = new List<Vector2>();
+				List<Vector2> positions = new List<Vector2> ();
 				foreach (IDictionary item in l) {
-					float x = float.Parse((string)item["x"]);
-					float y = float.Parse((string)item["y"]);
-					positions.Add(new Vector2 (x, y));
+					float x = float.Parse ((string)item ["x"]);
+					float y = float.Parse ((string)item ["y"]);
+					positions.Add (new Vector2 (x, y));
 				}
-				list.Add(positions);
+				list.Add (positions);
 			}
-			Emitter e = emitter.GetComponent<Emitter>();
+			Emitter e = emitter.GetComponent<Emitter> ();
 			e.waves = list;
+		} else {
+			Debug.Log(www.error.ToString());
 		}
 		yield break;
 	}
