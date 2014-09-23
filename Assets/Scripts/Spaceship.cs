@@ -19,15 +19,19 @@ public abstract class Spaceship : MonoBehaviour
 	public GameObject explosion;
 	
 	// 爆発の作成
-	public void Explosion ()
+	public void Explosion (bool gameover)
 	{
-		Instantiate (explosion, transform.position, transform.rotation);
+		GameObject go = (GameObject)Instantiate (explosion, transform.position, transform.rotation);
+		go.GetComponent<Explosion> ().gameOver = gameover;
 	}
 	
 	// 弾の作成
 	public void Shot (Transform origin)
 	{
-		Instantiate (bullet, origin.position, origin.rotation);
+		GameObject b = ObjectPool.instance.GetGameObject (bullet, origin.position, origin.rotation);
+		foreach (Transform child in b.transform){
+			child.gameObject.SetActive(true);
+		}
 	}
 
 	protected abstract void Move (Vector2 direction);

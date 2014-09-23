@@ -87,7 +87,7 @@ public class Player : Spaceship
 		// レイヤー名がBullet (Enemy)の時は弾を削除
 		if (layerName == "Bullet (Enemy)") {
 			// 弾の削除
-			Destroy (c.gameObject);
+			ObjectPool.instance.ReleaseGameObject(c.gameObject);
 		}
 		
 		// レイヤー名がBullet (Enemy)またはEnemyの場合は爆発
@@ -96,8 +96,8 @@ public class Player : Spaceship
 			FindObjectOfType<Manager> ().GameOver ();
 			
 			// 爆発する
-			Explosion ();
-			
+			Explosion (true);
+
 			// プレイヤーを削除
 			Destroy (gameObject);
 		}

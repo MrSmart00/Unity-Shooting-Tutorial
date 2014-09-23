@@ -20,7 +20,17 @@ public class Enemy : Spaceship {
 	// スコアのポイント
 	public EnemyScore score;
 
-	IEnumerator Start ()
+	void OnEnable ()
+	{
+		StartCoroutine (InitalizeRoutine ());
+	}
+
+	void OnDisable ()
+	{
+		GetComponent<SpriteRenderer> ().color = Color.white;
+	}
+
+	private IEnumerator InitalizeRoutine ()
 	{
 		// ローカル座標のY軸のマイナス方向に移動する
 		Move (transform.up * -1);
@@ -45,7 +55,7 @@ public class Enemy : Spaceship {
 			yield return new WaitForSeconds (shotDelay);
 		}
 	}
-	
+
 	// 機体の移動
 	protected override void Move (Vector2 direction)
 	{
@@ -70,7 +80,7 @@ public class Enemy : Spaceship {
 		hp = hp - bullet.power;
 		
 		// 弾の削除
-		Destroy(c.gameObject);
+		ObjectPool.instance.ReleaseGameObject (c.gameObject);
 		
 		// ヒットポイントが0以下であれば
 		if(hp <= 0 )
@@ -79,15 +89,16 @@ public class Enemy : Spaceship {
 			FindObjectOfType<Score>().AddPoint((int)score);
 			
 			// 爆発
-			Explosion ();
+			Explosion (false);
 			
 			// エネミーの削除
-			Destroy (gameObject);
-			
+			ObjectPool.instance.ReleaseGameObject (gameObject);
+
 		}else{
 			
 			GetComponent<Animator> ().SetTrigger("Damage");
 			
 		}
 	}
+
 }

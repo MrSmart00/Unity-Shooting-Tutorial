@@ -22,18 +22,29 @@ public class Emitter : MonoBehaviour {
 			while(manager.IsPlaying() == false) {
 				yield return new WaitForEndOfFrame ();
 			}
-			List<Vector2> positions = waves[current];
-			List<GameObject> enemies = new List<GameObject>();
-			foreach (Vector2 pos in positions) {
-				GameObject e = (GameObject) Instantiate(enemy, new Vector3(pos.x, pos.y, 0), Quaternion.identity);
-				e.transform.parent = transform;
-				enemies.Add(e);
-			}
-			while (transform.childCount != 0) {
-				yield return new WaitForEndOfFrame ();
-			}
-			if (waves.Count <= ++current) {
-				current = 0;
+			if (waves == null || waves.Count == 0) {
+				yield break;
+			} else {
+				List<Vector2> positions = waves[current];
+				foreach (Vector2 pos in positions) {
+					ObjectPool.instance.GetGameObject(enemy, new Vector3(pos.x, pos.y, 0), Quaternion.identity);
+				}
+				bool vanished = false;
+				while (!vanished) {
+					foreach (Transform child in ObjectPool.instance.transform){
+						GameObject cgo = child.gameObject;
+						if (cgo.name.StartsWith("Enemy")) {
+							vanished = !cgo.activeSelf;
+							if (vanished == false) {
+								break;
+							}
+						}
+					}
+					yield return new WaitForEndOfFrame ();
+				}
+				if (waves.Count <= ++current) {
+					current = 0;
+				}
 			}
 		}
 	}

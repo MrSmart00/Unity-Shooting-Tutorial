@@ -19,7 +19,6 @@ public class Initialize : MonoBehaviour {
 	}
 
 	private IEnumerator ConnectWave(string url) {
-		Debug.Log (url);
 		WWW www = new WWW (url);
 		yield return www;
 		if (www.error == null) {

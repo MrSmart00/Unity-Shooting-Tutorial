@@ -13,11 +13,11 @@ public class DestroyArea : MonoBehaviour {
 		
 		// BoxCollider2Dのサイズを変更
 		GetComponent<BoxCollider2D> ().size = size;
-		
 	}
 	
 	void OnTriggerExit2D (Collider2D c)
 	{
-		Destroy (c.gameObject);
+ 		ObjectPool.instance.ReleaseGameObject (c.gameObject);
 	}
 }
+ 

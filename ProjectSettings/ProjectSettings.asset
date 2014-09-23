@@ -65,7 +65,7 @@ PlayerSettings:
     16:10: 0
     16:9: 0
     Others: 0
-  iPhoneBundleIdentifier: com.kyusyukeigo.test
+  iPhoneBundleIdentifier: com.hiroya.test
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   productGUID: 25786f404ad304ee39e0286958734e78
