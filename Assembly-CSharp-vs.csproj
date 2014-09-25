@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Libraries\MiniJSON.cs" />
      <Compile Include="Assets\Scripts\Background.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\DestroyArea.cs" />
@@ -59,8 +58,13 @@
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\Score.cs" />
      <Compile Include="Assets\Scripts\Spaceship.cs" />
+     <Compile Include="Assets\Scripts\WaveData.cs" />
+     <None Include="Assets\Libraries\link.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="Parse.Unity">
+ <HintPath>/Users/Hiro/Documents/Unity_Projects/Unity-Shooting-Tutorial.git/Assets/Libraries/Parse.Unity.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

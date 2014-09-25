@@ -1,0 +1,11 @@
+<linker>
+  <assembly fullname="Parse.Unity">
+    <namespace fullname="Parse" preserve="all"/>
+    <namespace fullname="Parse.Internal" preserve="all"/>
+    <namespace fullname="System" preserve="all"/>
+    <namespace fullname="System.Threading" preserve="all"/>
+    <namespace fullname="System.Threading.Tasks" preserve="all"/>
+    <namespace fullname="System.Runtime.CompilerServices" preserve="all"/>
+    <namespace fullname="System.Runtime.ExceptionServices" preserve="all"/>
+  </assembly>
+</linker>
