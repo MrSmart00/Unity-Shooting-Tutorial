@@ -28,7 +28,7 @@ public class Emitter : MonoBehaviour {
 			while (!vanished) {
 				foreach (Transform child in ObjectPool.instance.transform){
 					GameObject cgo = child.gameObject;
-					if (cgo.name.StartsWith("Enemy")) {
+					if (LayerMask.LayerToName(cgo.layer).Equals("Enemy")) {
 						vanished = !cgo.activeSelf;
 						if (vanished == false) {
 							break;
